@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadDataServiceService } from '../load-data-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  records;
+
+  constructor(private service:LoadDataServiceService) { }
 
   ngOnInit(): void {
+    this.service.loadData().subscribe(resp=>{
+      console.log(resp);
+      this.records=resp['result']['records'];
+      console.log(this.records);
+    },err=>{
+      console.log(err);
+    });
   }
 
 }

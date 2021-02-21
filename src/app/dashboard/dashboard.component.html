@@ -6,6 +6,11 @@
         <th scope="col">aliment vache laitié</th>
     </thead>
     <tbody>
-        <tr></tr>
+        <tr *ngFor="let record of records">
+            <td>{{record._id}}</td>
+            <td>{{record.annee}}</td>
+            <td>{{record.regions}}</td>
+            <td>{{record["aliment-vache-laitiere"]}}</td>
+        </tr>
     </tbody>
 </table>
